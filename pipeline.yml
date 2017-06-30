@@ -1,11 +1,11 @@
 ---
 resources:
-- name: NodeJS-app
+- name: resource-web-app
   type: git
   source:
     uri: https://github.com/vc4017/cf-sample-app-nodejs.git
 
-- name: NodeJS-deploy-app
+- name: resource-deploy-web-app
   type: cf
   source:
     api: https://api.run.pivotal.io
@@ -16,11 +16,11 @@ resources:
     skip_cert_check: true
 
 jobs:
-- name: Integration
+- name: job-deploy-app
   serial: true
   plan:
-  - {get: NodeJS, trigger: true}
-  - put: NodeJS-deploy-app
+  - {get: resource-web-app, trigger: true}
+  - put: resource-deploy-web-app
     params:
-      manifest: NodeJS-app/manifest.yml
-      path: NodeJS
+      manifest: resource-web-app/manifest.yml
+      path: resource-web-app
