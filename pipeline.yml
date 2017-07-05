@@ -16,6 +16,21 @@ resources:
     skip_cert_check: true
 
 jobs:
+
+- name: job-test-app
+  public: true
+  serial: true
+  plan:
+  - get: cf-sample-app-nodejs
+  - get: cf-sample-app-nodejs_app
+    trigger: true
+  - task: web-app-tests
+    file: cf-sample-app-nodejs\test\task_run_tests.yml
+  - put: resource-deploy-web-app
+    params:
+      manifest: resource-app/manifest.yml
+      path: resource-app
+
 - name: job-deploy-app
   serial: true
   plan:
@@ -24,3 +39,4 @@ jobs:
     params:
       manifest: resource-web-app/manifest.yml
       path: resource-web-app
+	  
