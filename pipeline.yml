@@ -21,7 +21,6 @@ jobs:
   public: true
   serial: true
   plan:
-  - get: cf-sample-app-nodejs
   - get: resource-web-app
     trigger: true
   - task: web-app-tests
