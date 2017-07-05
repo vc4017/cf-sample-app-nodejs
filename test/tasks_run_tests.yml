@@ -12,4 +12,4 @@ inputs:
   path: gopath/src/github.com/cloudfoundry-community/simple-go-web-app
 
 run:
-  path: cf-sample-app-nodejs/test/task_run_tests.sh
+  path: resource-web-app/test/task_run_tests.sh
