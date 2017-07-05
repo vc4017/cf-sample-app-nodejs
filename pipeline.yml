@@ -21,8 +21,8 @@ jobs:
   public: true
   serial: true
   plan:
-  - get: cf-sample-app-nodejs
-  - get: cf-sample-app-nodejs_app
+  - get: resource-app
+  - get: resource-web-app
     trigger: true
   - task: web-app-tests
     file: cf-sample-app-nodejs\test\task_run_tests.yml
