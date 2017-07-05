@@ -33,7 +33,7 @@ jobs:
   - get: resource-deploy-web-app
     trigger: true
   - task: web-app-tests
-    file: cf-sample-app-nodejs/test/task_run_tests.yml
+    file: resource-web-app/test/task_run_tests.yml
   - put: resource-deploy-web-app
     params:
       manifest: resource-web-app/manifest.yml
