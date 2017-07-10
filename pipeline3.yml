@@ -1,0 +1,19 @@
+---
+jobs: 
+
+jobs:
+- name: unit-tests
+  serial: true
+  public: true
+  plan:
+  - get: concourse-app
+    trigger: true
+  - task: run-unit-tests
+    file: concourse-app/unit-tests.yml
+
+resources: 
+
+- name: concourse-app
+  type: git
+  source: 
+   uri: https://github.com/vc4017/cf-sample-app-nodejs.git
