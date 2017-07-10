@@ -9,7 +9,7 @@ jobs:
   - get: concourse-app
     trigger: true
   - task: run-unit-tests
-    file: cf-sample-app-nodejs/unit-tests.yml
+    file: C:/Users/miracle/Desktop/cf-sample-app-nodejs/unit-tests.yml
 
 - name: job-deploy-app
   serial: true
