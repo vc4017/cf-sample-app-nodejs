@@ -9,7 +9,7 @@ jobs:
   - get: concourse-app
     trigger: true
   - task: run-unit-tests
-    file: unit-tests.yml
+    file: concourse-app/unit-tests.yml
 
 - name: job-deploy-app
   serial: true
