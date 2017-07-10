@@ -11,4 +11,4 @@ inputs:
 - name: concourse-app
 
 run:
-  path: concourse-pipeline-samples/blue-green-app-deployment/ci/tasks/run-unit-tests
+  path: concourse-app/run-unit-tests
