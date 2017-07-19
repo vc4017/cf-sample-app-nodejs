@@ -4,6 +4,9 @@ resources:
   type: git
   source:
     uri: https://github.com/vc4017/cf-sample-app-nodejs.git
+    branch: master
+    username: vc4017
+    password: venki@521
 
 - name: cf-env
   type: cf
