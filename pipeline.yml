@@ -17,6 +17,17 @@ resources:
     skip_cert_check: true
 
 jobs:
+
+
+- name: unit-tests
+  serial: true
+  public: true
+  plan:
+  - get: Node-js-app
+    trigger: true
+  - task: run-unit-tests
+    file: C:\Users\miracle\Desktop\cf-sample-app-nodejs\unit-tests.yml
+
 - name: job-deploy-app
   serial: true
   plan:
