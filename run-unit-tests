@@ -2,6 +2,6 @@
 
 set -xe
 
-cd bgd-app
+cd cf-sample-app-nodejs
 npm install
 mocha tests --recursive
