@@ -11,4 +11,4 @@ inputs:
 - name: Node-js-app
 
 run:
-  path: run-unit-tests
+  path: C:\Users\miracle\Desktop\cf-sample-app-nodejs\run-unit-tests
