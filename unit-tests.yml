@@ -10,5 +10,8 @@ image_resource:
 inputs:
 - name: Node-js-app
 
+outputs: 
+- name: Node-js-app-result
+
 run:
   path: cf-sample-app-nodejs/run-unit-tests
