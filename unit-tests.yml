@@ -1,5 +1,5 @@
 ---
-platform: windows
+platform: linux
 
 image_resource:
   type: docker-image
@@ -11,4 +11,4 @@ inputs:
 - name: Node-js-app
 
 run:
-  path: run-unit-tests
+  path: cf-sample-app-nodejs/run-unit-tests
