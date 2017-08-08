@@ -1,6 +1,9 @@
 {
   "name": "cf-nodejs",
   "version": "1.0.0",
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "express": "^4.13.4",
     "jade": "^1.11.0"
