@@ -8,10 +8,9 @@ resources:
 - name: Node-js-app
   type: git
   source:
-    uri: git@github.com:vc4017/cf-sample-app-nodejs.git
+    uri: https://github.com/vc4017/cf-sample-app-nodejs.git
     branch: master
-    private_key: ((private-repo-key))
-
+    
 - name: cf-env
   type: cf
   source:
