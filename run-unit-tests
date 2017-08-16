@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -xe
+
+cd cf-sample-app-nodejs
+npm install
+mocha tests --recursive

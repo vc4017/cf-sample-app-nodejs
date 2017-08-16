@@ -2,8 +2,45 @@
 groups:
 - name: main
   jobs:
+  - unit-tests
   - build-docker-image
   - job-deploy-app
+
+jobs:
+
+- name: unit-tests
+  serial: true
+  public: true
+  plan:
+  - get: Node-js-app
+    trigger: true
+  - task: run-unit-tests
+    file: cf-sample-app-nodejs/unit-tests.yml
+
+- name: build-docker-image
+  public: true
+  serial: true
+  plan:
+  - get: Node-js-app
+    trigger: true
+    passed: 
+      - unit-tests
+  - put: docker-image
+    params:
+      build: Node-js-app
+      
+- name: job-deploy-app
+  serial: true
+  plan:
+  - get: Node-js-app
+    trigger: true
+    passed: 
+      - build-docker-image
+  - put: cf-env
+    params:
+      manifest: Node-js-app/manifest.yml
+      path: Node-js-app
+  
 resources:
 - name: Node-js-app
   type: git
@@ -28,23 +65,3 @@ resources:
     password: venki@521
     repository: venki521/sampleapp
     
-jobs:
-
-- name: build-docker-image
-  public: true
-  serial: true
-  plan:
-  - get: Node-js-app
-    trigger: true
-  - put: docker-image
-    params:
-      build: Node-js-app
-      
-- name: job-deploy-app
-  serial: true
-  plan:
-  - {get: Node-js-app, trigger: true}
-  - put: cf-env
-    params:
-      manifest: Node-js-app/manifest.yml
-      path: Node-js-app
