@@ -8,7 +8,7 @@ image_resource:
     tag: "latest"
 
 inputs:
-- name: Node-js-app
+- name: cf-sample-app-nodejs
 
 run:
   path: cf-sample-app-nodejs/run-unit-tests
