@@ -30,7 +30,7 @@ resource_types:
 - name: artifactory
   type: docker-image
   source:
-    repository: venki521/sampleapp
+    repository: mborges/artifactory-resource
 
 ## RESOURCES
 
