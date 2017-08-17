@@ -40,13 +40,13 @@ resources:
   source:
     endpoint: http://172.17.13.59:8081/artifactory
     repository: "/libs-release-local"
-    regex: "pivotal-(?<0.0.1>.*).tar.gz"
+    regex: "pivotal-1.0.1-rc1.tar.gz"
 
 - name: artifactory-snapshot
   type: artifactory
   source:
     endpoint: http://172.17.13.59:8081/artifactory
     repository: "/libs-snapshot-local/Pivotal"
-    regex: "pivotal-(?<0.0.1>.*).tar.gz"
+    regex: "pivotal-1.0.1-rc1.tar.gz"
     username: admin
     password: venki@521
