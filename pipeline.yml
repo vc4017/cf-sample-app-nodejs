@@ -2,20 +2,31 @@
 groups:
 - name: main
   jobs:
-  - unit-tests
+  - test
   - build-docker-image
   - job-deploy-app
 
 jobs:
 
-- name: unit-tests
+- name: test
   serial: true
-  public: true
+  disable_manual_trigger: false
   plan:
-  - get: Node-js-app
-    trigger: true
-  - task: run-unit-tests
-    file: cf-sample-app-nodejs/unit-tests.yml
+      - get: Node-js-app
+        trigger: true
+
+      - task: npm-install
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: node, tag: "6" }
+          inputs:
+            - name: Node-js-app
+              path: .
+          run:
+            path: npm
+            args: [ install ]
 
 - name: build-docker-image
   public: true
