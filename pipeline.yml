@@ -35,7 +35,7 @@ jobs:
   - get: Node-js-app
     trigger: true
     passed: 
-      - unit-tests
+      - test
   - put: docker-image
     params:
       build: Node-js-app
