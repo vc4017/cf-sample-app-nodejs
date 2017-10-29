@@ -1,52 +1,11 @@
 ---
-groups:
-- name: main
-  jobs:
-  - test
-  - build-docker-image
-  - job-deploy-app
-
 jobs:
 
-- name: test
-  serial: true
-  disable_manual_trigger: false
-  plan:
-      - get: Node-js-app
-        trigger: true
-
-      - task: npm-install
-        config:
-          platform: linux
-          image_resource:
-            type: docker-image
-            source: {repository: node, tag: "6" }
-          inputs:
-            - name: Node-js-app
-              path: .
-          run:
-            path: npm
-            args: [ install ]
-
-- name: build-docker-image
-  public: true
-  serial: true
-  plan:
-  - get: Node-js-app
-    trigger: true
-    passed: 
-      - test
-  - put: docker-image
-    params:
-      build: Node-js-app
-      
 - name: job-deploy-app
   serial: true
   plan:
   - get: Node-js-app
     trigger: true
-    passed: 
-      - build-docker-image
   - put: cf-env
     params:
       manifest: Node-js-app/manifest.yml
@@ -68,11 +27,3 @@ resources:
     organization: concourse-node.js app
     space: deployment
     skip_cert_check: true
-- name: docker-image
-  type: docker-image
-  source:
-    email: tovenki.ch@gmail.com
-    username: venki521
-    password: venki@521
-    repository: venki521/sampleapp
-    
